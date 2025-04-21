@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collaborative Editor</title>
+    <style>
+        #editor {
+            width: 80%;
+            height: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="editor" contenteditable="true"></div>
+
+    <script>
+        const docId = window.location.hash.substring(1) || Math.random().toString(36).substr(2, 9);
+        const ws = new WebSocket('ws://localhost:8080/ws');
+        
+        // Initialize editor
+        const editor = document.getElementById('editor');
+        window.location.hash = docId;
+
+        // WebSocket handlers
+        ws.onmessage = (event) => {
+            const msg = JSON.parse(event.data);
+            if (msg.docId === docId) {
+                editor.innerHTML = msg.content;
+            }
+        };
+
+        // Send updates
+        editor.addEventListener('input', () => {
+            ws.send(JSON.stringify({
+                docId: docId,
+                content: editor.innerHTML
+            }));
+        });
+
+        // Load initial content
+        fetch(`/doc/${docId}`)
+            .then(res => res.text())
+            .then(content => editor.innerHTML = content);
+    </script>
+</body>
+</html>
