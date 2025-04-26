@@ -1,44 +1,27 @@
-// C++ program to illustrate sorting
-// through Insertion sort
 
-#include <bits/stdc++.h>
-using namespace std;
-
-void insertionSort(int arr[], int n)
-{
-    int i, j;
-    for (i = 1; i < n; i++)
-    {
-        int var = arr[i]; //Taken first element as sorted
-        for (j = i - 1; j >= 0; j--)
-        {
-            //Making comparisons
-            if (arr[j] > var)
-            {
-                //Shifting elements
-                arr[j + 1] = arr[j];
-            }
-            else
-            {
-                break;
-            }
+#include<iostream>
+#include<vector>
+using namespace std; 
+void insertion_sort(vector<int>&v){
+    int n = v.size();
+    for(int i = 1 ; i<n;i++){  //ignoring the first element
+        int key = v[i];
+        int j = i-1; // first element ke peeche ke elements se compare kar rahe thhey 
+        while(j>=0 && v[j]>key){
+            v[j+1] = v[j];
+            j--;
         }
-        arr[j + 1] = var;
-    }
-
-    cout << "Array after sorting:" << endl;
-
-    for (int i = 0; i <= n - 1; i++)
-    {
-        //Printing the array after being sorted
-        cout << arr[i] << " ";
+        v[j+1] = key;
     }
 }
-
-int main()
-{
-    int array[] = {9, 45, 23, 71, 80, 55};
-    int size = 6;
-    insertionSort(array, size);
+void print(vector<int>&v){
+    for (int i =0 ;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
 }
-
+int main(){
+    vector <int> v {44,33,55,22,11};
+    insertion_sort(v);
+    print(v);
+    return 0 ;
+}
