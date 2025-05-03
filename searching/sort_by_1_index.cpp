@@ -13,7 +13,7 @@ void printvv(vector<vector<int>>&v){
     }
 }
 bool mycomp(vector<int>&a , vector<int>&b){
-    return a[1]<b[1];
+    return a[1]<b[1]; // desc order
 }
 int main(){
     vector<vector<int>>v;
