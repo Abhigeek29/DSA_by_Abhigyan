@@ -5,7 +5,7 @@ int find_missing_from_duplicate(int arr[],int size){
     for(int i =0 ; i<size;i++){
         int getelem = abs(arr[i]);
         if(arr[getelem -1] >0){
-            arr[getelem-1] *= -1;
+            arr[getelem-1] *= -1;     // 1 se subtract isisliye kia kyuki element out of bound na chale jaye
         }
     }
     for(int i = 0 ; i<size;i++){
