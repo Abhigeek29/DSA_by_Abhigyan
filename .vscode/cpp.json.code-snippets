@@ -1,0 +1,14 @@
+{
+  "C++ Boilerplate Shortcut": {
+    "prefix": "!pp",
+    "body": [
+      "#include<iostream>",
+      "using namespace std;",
+      "",
+      "int main() {",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ basic main boilerplate"
+  }
+}
