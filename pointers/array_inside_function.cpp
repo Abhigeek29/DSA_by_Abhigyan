@@ -1,4 +1,5 @@
 // Array is passed by reference inside a function 
+// revise this code
 
 #include<iostream>
 using namespace std;
