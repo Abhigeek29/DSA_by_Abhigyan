@@ -96,7 +96,50 @@ void insertrandom(Node* &head , Node* &tail, int data , int pos){
         newnode->next = curr;
     }
 }
+void deleteathead(Node* &head){
+    Node* temp = head;
+    head = temp->next;
+    temp->next = NULL; // isolate kardia node ko
+    delete temp;
+}
+void deleteattail(Node* head , Node* tail){
+    Node* prev = head;
+    while(prev->next!=tail){
+        prev = prev->next;
+    }
+    prev->next = NULL;
+    delete tail;
+    tail = prev;
+}
 
+void deleteatrandom(Node*head , Node*tail , int pos){
+    Node* prev = NULL;
+    Node* curr = head;
+    while(pos!=1){
+        prev = curr ;
+        curr = curr->next;
+        pos--;
+    }
+    prev->next = curr->next;
+    curr->next = NULL;
+    delete curr;
+}
+void deletion(Node*&head , Node* & tail , int pos){
+    if(head==NULL){
+        cout<<"Cannot delete because linked list is empty"<<endl;
+        return;
+    }
+    else if(pos==1){
+        deleteathead(head);
+    }
+    else if(pos == getlength(head)){
+        deleteattail(head , tail);
+    }
+    else{
+        deleteatrandom(head , tail , pos);
+    }
+
+}
 void printll(Node* head){
     Node* temp = head;
     while(temp!=NULL){
@@ -121,6 +164,11 @@ int main() {
     printll(head);
     insertrandom(head , tail ,  5000 , 60);
     printll(head);
+
+    deletion(head , tail , 6);
+    // deletion(head , tail , 3);
+    printll(head);
+    // deletion(head , tail , );
     
     // Node* first = new Node(10);
     // Node* second = new Node(20);
