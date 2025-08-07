@@ -10,7 +10,7 @@ vector<int> prevelement(int *arr , int size , vector<int>& ans) {
     for(int i = 0; i < size; i++) {
         int curr = arr[i];
 
-        while(st.top() <= curr && st.top() != -1) {
+        while (!st.empty() && st.top() >= curr) {
             st.pop();
         }
 
