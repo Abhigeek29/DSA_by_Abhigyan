@@ -18,6 +18,16 @@ void reverse(queue<int>&q){
         st.pop();
     }
 }
+
+void recreverse(queue<int> &q){
+    if(q.empty()){
+        return ;
+    }
+    int temp = q.front();
+    q.pop();
+    recreverse(q);
+    q.push(temp);
+}
 int main() {
     queue<int> q;
     q.push(10);
@@ -27,12 +37,12 @@ int main() {
     q.push(50);
     q.push(60);
 
-    reverse(q);
+    recreverse(q);
 
     while(!q.empty()){
         cout<<q.front()<<" ";
         q.pop();
     }
-    
+
     return 0;
 }
