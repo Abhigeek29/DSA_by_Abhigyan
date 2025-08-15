@@ -1,4 +1,6 @@
 // Implementation of tree 
+// Below is the input tree
+// 10 20 40 80 -1 -1 -1 50 90 -1 -1 -1 30 60 -1 -1 70 -1 -1
 #include<iostream>
 #include<queue>
 using namespace std;
