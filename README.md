@@ -42,4 +42,9 @@ To navigate to a question, you must first know the topic it belongs to — this 
  ## 📬 Contact
 
 📩 Email: sahooabhigyan24@gmail.com
+
 🌐 GitHub: [Abhigeek29](https://github.com/Abhigeek29)
+
+💼 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/abhigyan-sahoo-0b312b24a/)
+
+🏆 LeetCode: [Your LeetCode Profile](https://leetcode.com/u/Code_Master_supreme/)
