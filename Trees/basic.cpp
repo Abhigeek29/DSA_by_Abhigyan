@@ -90,6 +90,36 @@ void levelorder(Node* root){
         }
     }
 }
+void levelorderprint(Node*root){
+    queue<Node*>q;
+    q.push(root);
+    q.push(NULL);
+
+    // initial state banadi 
+    // ab levelwise print karega
+    int level = 0 ;
+    cout<<"level  "<<level<<": ";
+    while(q.size()>1){
+        Node*front = q.front();
+        q.pop();
+        if(front==NULL){
+            cout<<endl;
+            level++;  // move to next level
+            cout << "Level " << level << ": ";
+            q.push(NULL);
+        }
+        else{
+            // valid case
+            cout<<front->data<<" ";
+            if(front->left!=nullptr){
+                q.push(front->left);
+            }
+            if(front->right!= nullptr){
+                q.push(front->right);
+            }
+        }
+    }
+}
 int main() {
     Node* root = createnode();
     cout<<"The preorder traversal is "<<endl;
@@ -103,6 +133,9 @@ int main() {
     cout<<endl;
     cout<<"The levelorder traversal is "<<endl;
     levelorder(root);
+    cout<<endl;
+    cout<<"The level wise levelorder traversal is "<<endl;
+    levelorderprint(root);
     cout<<endl;
     return 0;
 }
