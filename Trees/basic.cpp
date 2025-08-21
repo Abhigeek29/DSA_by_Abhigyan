@@ -121,6 +121,33 @@ void levelorderprint(Node*root){
         }
     }
 }
+void leftview(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    q.push(NULL);
+    bool checker = true ;
+
+    while(q.size()>1){
+        Node* curr = q.front();
+        q.pop();
+        if(curr==nullptr){
+            if(!q.empty()){
+                q.push(NULL);
+                checker = true; // marker for the next in queue
+            }
+        }
+        else{
+            if(checker){
+                cout<<curr->data<<" ";
+                checker = false; // marks the checker off after printing the first element 
+            }
+            if(curr->left) q.push(curr->left);
+            if(curr->right) q.push(curr->right);
+        }
+    }
+
+    // initial state is done 
+}
 void createmap(int inorder[],int size, map<int,int>&valuetoindex){
     // optimisation
     for(int i = 0 ; i<size;i++){
@@ -161,34 +188,36 @@ Node* createtraversal(int preorder[] , int inorder[], int &preindex , int instar
     return root;
 }
 int main() {
-    int preorder[] = {2,8,10,6,4,12};
-    int inorder[] = {10,8,6,2,4,12};
-    int size = 6;
-    int preindex = 0;
-    int instart = 0;
-    int inend = 5;
-    map<int,int> valuetoindex;
-    createmap(inorder,size,valuetoindex);
-    Node* root = createtraversal(preorder,inorder , preindex ,instart,inend,size,valuetoindex);
-    cout<<"The level wise levelorder traversal is "<<endl;
-    levelorderprint(root);
-    cout<<endl;
-    // Node* root = createnode();
-    // cout<<"The preorder traversal is "<<endl;
-    // preorder(root);
-    // cout<<endl;
-    // cout<<"The inorder traversal is "<<endl;
-    // inorder(root);
-    // cout<<endl;
-    // cout<<"The postorder traversal is "<<endl;
-    // postorder(root);
-    // cout<<endl;
-    // cout<<"The levelorder traversal is "<<endl;
-    // levelorder(root);
-    // cout<<endl;
+    // int preorder[] = {2,8,10,6,4,12};
+    // int inorder[] = {10,8,6,2,4,12};
+    // int size = 6;
+    // int preindex = 0;
+    // int instart = 0;
+    // int inend = 5;
+    // map<int,int> valuetoindex;
+    // createmap(inorder,size,valuetoindex);
+    // Node* root = createtraversal(preorder,inorder , preindex ,instart,inend,size,valuetoindex);
     // cout<<"The level wise levelorder traversal is "<<endl;
     // levelorderprint(root);
     // cout<<endl;
-
+    Node* root = createnode();
+    cout<<"The preorder traversal is "<<endl;
+    preorder(root);
+    cout<<endl;
+    cout<<"The inorder traversal is "<<endl;
+    inorder(root);
+    cout<<endl;
+    cout<<"The postorder traversal is "<<endl;
+    postorder(root);
+    cout<<endl;
+    cout<<"The levelorder traversal is "<<endl;
+    levelorder(root);
+    cout<<endl;
+    cout<<"The level wise levelorder traversal is "<<endl;
+    levelorderprint(root);
+    cout<<endl; 
+    cout<<"The leftview of the tree is  "<<endl;
+    leftview(root);
+    cout<<endl;
     return 0;
 }
