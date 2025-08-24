@@ -238,6 +238,34 @@ void VerticalTraversal(Node* root){
         cout<<i.second<<" ";
     }
 }
+
+void BottomTraversal(Node* root){
+    /* Terminologies 
+        vl-> the vertical level
+        vltonode -> the which node is at which vertical level
+    */
+    map<int,int> vltonode;
+    queue< pair<Node* , int >> q; // stores pair and its level
+    // int vl = 0 ; 
+    q.push(make_pair(root,0));
+    while(!q.empty()){
+        pair<Node*,int> temp = q.front(); // q mai pair store hore haina
+        q.pop();
+        int vl = temp.second;
+        Node*  front = temp.first;
+        //override kardo top ke answer ko
+        vltonode[vl] = front->data ; // 
+        
+        // store child
+        if(front->left) q.push(make_pair(front->left,vl-1));
+        if(front->right) q.push(make_pair(front->right,vl+1));
+    }
+
+    //printing the answer 
+    for(auto i : vltonode){
+        cout<<i.second<<" ";
+    }
+}
 int main() {
     // int preorder[] = {2,8,10,6,4,12};
     // int inorder[] = {10,8,6,2,4,12};
@@ -275,6 +303,9 @@ int main() {
     cout<<endl;
     cout<<"The vertical view of the tree is  "<<endl;
     VerticalTraversal(root);
+    cout<<endl;
+    cout<<"The bottom view of the tree is  "<<endl;
+    BottomTraversal(root);
     cout<<endl;
     return 0;
 
