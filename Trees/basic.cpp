@@ -145,8 +145,32 @@ void leftview(Node* root){
             if(curr->right) q.push(curr->right);
         }
     }
+}
 
-    // initial state is done 
+void rightview(Node* root){
+    queue<Node*>q;
+    q.push(root);
+    q.push(NULL);
+    int checker = true;
+    // initial state done
+    while(q.size()>1){
+        Node* curr = q.front();
+        q.pop();
+        if(curr==nullptr){
+            if(!q.empty()){
+                q.push(NULL);
+                checker = true;
+            }
+        }
+        else{
+            if(checker){
+                cout<<curr->data<<" ";
+                checker=false;
+            }
+            if(curr->right) q.push(curr->right);
+            if(curr->left) q.push(curr->left);
+        }
+    }
 }
 void createmap(int inorder[],int size, map<int,int>&valuetoindex){
     // optimisation
@@ -187,6 +211,33 @@ Node* createtraversal(int preorder[] , int inorder[], int &preindex , int instar
 
     return root;
 }
+void VerticalTraversal(Node* root){
+    /* Terminologies 
+        vl-> the vertical level
+        vltonode -> the which node is at which vertical level
+    */
+    map<int,int> vltonode;
+    queue< pair<Node* , int >> q; // stores pair and its level
+    // int vl = 0 ; 
+    q.push(make_pair(root,0));
+    while(!q.empty()){
+        pair<Node*,int> temp = q.front(); // q mai pair store hore haina
+        q.pop();
+        int vl = temp.second;
+        Node*  front = temp.first;
+        if(vltonode.find(vl)==vltonode.end()){
+            vltonode[vl] = front->data ; // 
+        }
+        // store child
+        if(front->left) q.push(make_pair(front->left,vl-1));
+        if(front->right) q.push(make_pair(front->right,vl+1));
+    }
+
+    //printing the answer 
+    for(auto i : vltonode){
+        cout<<i.second<<" ";
+    }
+}
 int main() {
     // int preorder[] = {2,8,10,6,4,12};
     // int inorder[] = {10,8,6,2,4,12};
@@ -219,5 +270,12 @@ int main() {
     cout<<"The leftview of the tree is  "<<endl;
     leftview(root);
     cout<<endl;
+    cout<<"The rightview of the tree is  "<<endl;
+    rightview(root);
+    cout<<endl;
+    cout<<"The vertical view of the tree is  "<<endl;
+    VerticalTraversal(root);
+    cout<<endl;
     return 0;
+
 }
