@@ -266,6 +266,63 @@ void BottomTraversal(Node* root){
         cout<<i.second<<" ";
     }
 }
+
+void leftboundary(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    if(root->left==nullptr && root->right==nullptr){
+        return ;
+    }
+    cout<<root->data<<" ";
+    if(root->left!=nullptr){
+        leftboundary(root->left);
+    }
+    else{
+        leftboundary(root->right);
+    }
+}
+void leafboundary(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    if(root->left ==nullptr && root->right==nullptr){
+        cout<<root->data<<" ";
+    }
+    
+    leafboundary(root->left);
+    leafboundary(root->right);
+    
+}
+
+void rightboundary(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    if(root->left==nullptr && root->right==nullptr){
+        return ;
+    }
+    if(root->right!=nullptr){
+        rightboundary(root->right);
+    }
+    else{
+        rightboundary(root->left);
+    }
+    cout<<root->data<<" ";
+}
+void boundarytraversal(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    leftboundary(root);
+    leafboundary(root);
+    if(root->right!=nullptr){
+        rightboundary(root->right);
+    }
+    else{
+        rightboundary(root->left);
+    }
+}
 int main() {
     // int preorder[] = {2,8,10,6,4,12};
     // int inorder[] = {10,8,6,2,4,12};
@@ -306,6 +363,9 @@ int main() {
     cout<<endl;
     cout<<"The bottom view of the tree is  "<<endl;
     BottomTraversal(root);
+    cout<<endl;
+    cout<<"The boundary traversal view of the tree is  "<<endl;
+    boundarytraversal(root);
     cout<<endl;
     return 0;
 
