@@ -38,6 +38,28 @@ void createBST(Node* &root) {
         cin>>data;
     }
 }
+Node* minvalue(Node* root){
+    if(root == nullptr){
+        cout<<"No MIN value"<<endl;
+        return nullptr;
+    }
+    Node* temp = root;
+    while(temp->left!=nullptr){
+        temp = temp->left;
+    }
+    return temp;
+}
+Node* maxvalue(Node* root){
+    if(root == nullptr){
+        cout<<"No MAX value"<<endl;
+        return nullptr;
+    }
+    Node* temp = root;
+    while(temp->right!=nullptr){
+        temp = temp->right;
+    }
+    return temp;
+}
 void levelOrderTraversal(Node* root ) {
 	queue<Node*> q;
 	q.push(root);
@@ -64,11 +86,56 @@ void levelOrderTraversal(Node* root ) {
 		}
 	}
 }
+void preorder(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    // pehle root process hoga
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void inorder(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    // pehle left process hoga
+    
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+void postorder(Node* root){
+    if(root==nullptr){
+        return ;
+    }
+    // pehle left and right process hoga
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
 int main() {
     Node* root = NULL;
     createBST(root);
-    cout<<"The level order traversal of the tree is :"<<endl;
+    cout<<"The level order traversal of the tree is :";
     levelOrderTraversal(root);
+    cout<<endl;
+    cout<<"The preorder traversal of the tree is :";
+    preorder(root);
+    cout<<endl;
+    cout<<"The inorder traversal of the tree is :";
+    inorder(root);
+    cout<<endl;
+    cout<<"The postorder traversal of the tree is :";
+    postorder(root);
+    cout<<endl;
+    cout<<"The minimum value of the tree is :";
+    Node* mini = minvalue(root);
+    cout<<mini->data<<" "<<endl;
+    cout<<endl;
+    cout<<"The maximum value of the tree is :";
+    Node* maxi = maxvalue(root);
+    cout<<maxi->data<<" ";
     cout<<endl;
     return 0;
 }
