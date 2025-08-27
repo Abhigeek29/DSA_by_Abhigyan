@@ -114,6 +114,23 @@ void postorder(Node* root){
     postorder(root->right);
     cout<<root->data<<" ";
 }
+bool binarysearch(Node* root , int target){
+    if(root == nullptr){
+        return false;
+    }
+    if(root->data == target){
+        return true;
+    }
+    bool leftans = false;
+    bool rightans = false;
+    if(target>root->data){
+        rightans =binarysearch(root->right,target);
+    }
+    else{
+        leftans = binarysearch(root->left,target);
+    }
+    return leftans || rightans ;
+}
 int main() {
     Node* root = NULL;
     createBST(root);
@@ -137,5 +154,21 @@ int main() {
     Node* maxi = maxvalue(root);
     cout<<maxi->data<<" ";
     cout<<endl;
+
+    int target ;
+    cout<<"enter the target you want to find" <<endl;
+    cin>>target;
+    while(target!=-1){
+        bool ans = binarysearch(root,target);
+        if(ans==true){
+            cout<<"Found"<<endl;
+        }
+        else{
+            cout<<"Not Found"<<endl;
+        }
+        cout<<"enter the target you want to find" <<endl;
+        cin>>target;
+    }
+    cout<<"All operations done "<<endl;
     return 0;
 }
