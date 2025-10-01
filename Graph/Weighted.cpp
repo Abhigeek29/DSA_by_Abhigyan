@@ -4,11 +4,11 @@
 #include<unordered_map>
 #include<vector>
 using namespace std;
-
+template<typename T> // TO GENERALISE THE DATATYPE
 class Graph{
 public:
-    unordered_map<int,list<pair<int,int>>> adjacencyList;
-    void addEdge(int u , int v, int wt, bool direction){
+    unordered_map<T,list<pair<T,T>>> adjacencyList;
+    void addEdge(T u , T v, T wt, bool direction){
         if(direction==1){
             //directed graph
             adjacencyList[u].push_back({v,wt});
@@ -22,7 +22,7 @@ public:
     void printlist(){
         for(auto it : adjacencyList){
             cout<<it.first<<"->"<<"{";
-            for(pair<int,int>p: it.second){
+            for(pair<T,T>p: it.second){
                 cout<<"{"<<p.first<<","<<p.second<<"}"<<",";
             }
             cout<<"}"<<endl;
@@ -30,7 +30,7 @@ public:
     }
 };
 int main() {
-    Graph g;
+    Graph<int> g;
     g.addEdge(0,1,50,1);
     g.addEdge(1,2,40,1);
     g.addEdge(1,3,30,1);
