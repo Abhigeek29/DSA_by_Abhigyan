@@ -64,15 +64,15 @@ int main() {
     // for a celebrity whole row is zero except himself
     for(int i = 0 ; i<mat.size();i++){
         if(mat[potential_celeb][i]==1 && i!=potential_celeb){
-            return -1 ;
+            cout<< -1<<"No celeb exists"<<endl ;
         }
     }
     // for a celebrity in a column every number should be 1 
     for(int i = 0 ; i<mat.size();i++){
         if( i!=potential_celeb && mat[i][potential_celeb]==0){
-            return -1;
+            cout<< -1<<"No celeb exists"<<endl ;
         }
     }
-    return potential_celeb;
+    cout<<"The celebrity is : "<<potential_celeb;
     return 0;
 }
