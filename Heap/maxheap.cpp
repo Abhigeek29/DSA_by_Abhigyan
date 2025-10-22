@@ -1,3 +1,4 @@
+// done using step up approach 
 #include<iostream>
 using namespace std;
 
