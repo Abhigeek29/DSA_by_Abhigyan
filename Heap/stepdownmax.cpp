@@ -27,15 +27,29 @@ void buildmaxheap(int arr[] , int size){
         heapify(arr, i, size);
     }
 }
+
+// 70 14 18 11 5 13 8 9 10 3
+void sortheap(int arr[],int size){
+    // writing down the max heap function
+    // step1 : replace first with last 
+    // decrease the size by 1 
+    // apply heapify algorithm
+    for(int i = size-1 ; i>0;i--){
+        swap(arr[i],arr[0]);
+        heapify(arr,0,i);
+    }
+}
 void printheap(int arr[],int size){
     for(int i = 0 ; i<size;i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
 }
+
 int main() {
     int arr[]={10,3,8,9,5,13,18,14,11,70};
     buildmaxheap(arr,10);
+    sortheap(arr,10);
     printheap(arr,10);
     return 0;
 }
