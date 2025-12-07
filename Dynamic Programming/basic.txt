@@ -1,0 +1,6 @@
+How to identify DP problem's
+1. Overlapping Subproblem : Recurring problems 
+2. Optimal Substructure : Solution of a bigger problem depends upon a much smaller 
+    problem of the similar type
+
+DP stores a problem oonce done and then never solves it again --> underlying principle of dp
