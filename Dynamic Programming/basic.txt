@@ -4,3 +4,17 @@ How to identify DP problem's
     problem of the similar type
 
 DP stores a problem oonce done and then never solves it again --> underlying principle of dp
+
+
+Step's of Top down approach -> Rec + Memoization
+1. Create a dp array 
+2. use recursive relation 
+3. check dp array for already present answers , if not then store , otherwise dont
+    calculate
+
+Steps' of Bottom Up approach -> Tabular Method 
+1. Create a dp array 
+2. Check for Base case 
+3. Rest Solution with Recursive Solution 
+
+For Pattern based -> agar pattern dikhra hai toh pattern use karo 
