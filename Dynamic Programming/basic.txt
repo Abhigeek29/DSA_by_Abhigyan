@@ -18,3 +18,7 @@ Steps' of Bottom Up approach -> Tabular Method
 3. Rest Solution with Recursive Solution 
 
 For Pattern based -> agar pattern dikhra hai toh pattern use karo 
+
+To identify whether it is 1D dp and 2D dp, the no. of parameters changing decides that 
+if 1 parameter changes then 1D dp 
+if 2 parameter changes then 2D dp 
