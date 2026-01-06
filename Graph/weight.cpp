@@ -14,6 +14,10 @@ int main(){
     int vertices,edges;
     cout<<"Enter the number of vertices and edges in that order"<<endl;
     cin>>vertices>>edges;
+    if(edges> (vertices*(vertices-1)/2)){
+        cout<<"impossible case"<<endl;
+        return 0;
+    }
     vector<vector<int>> adjacencymatrix(vertices,vector<int>(edges,0)); // init 0
     int u , v , weight;
     cout<<"Enter the indices and their respective weights"<<endl;

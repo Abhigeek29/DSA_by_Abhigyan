@@ -41,6 +41,10 @@ int main(){
 
     vector<vector<int>> adjacencymatrix(vertices, vector<int>(edges,0)); // 0 init
     int u , v;
+    if(edges> (vertices*(vertices-1)/2)){
+        cout<<"impossible case"<<endl;
+        return 0;
+    }
     for(int i = 0 ; i<edges;i++){
         cin>>u>>v;
         adjacencymatrix[u][v] = 1;
